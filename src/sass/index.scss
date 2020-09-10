@@ -33,6 +33,11 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
 
 @import "icons.scss";
 
+.section.content {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
 .zoom-hint {
   position: absolute;
   right: 0px;
@@ -46,7 +51,7 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
 
 .chat {
   $triangle-size: 20px;
-  $triangle-top-margin: 30px;
+  $triangle-top-margin: 36px;
   $border-color: $grey-lightest;
   $padding: 2rem;
 
@@ -115,16 +120,25 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
   }
 
   .media-content + .media-right .image {
-    background-color: findDarkColor($red);
+    background-color: findDarkColor($orange);
   }
 
   .questions {
-    margin-top: 2rem;
+    margin: 2rem 0;
     .question {
       display: block;
       padding: 0.5rem $padding;
       margin-bottom: 1rem;
-      border: 1px solid $border-color;
+    }
+  }
+
+  .is-typing {
+    padding-right: 18px;
+    color: $grey-light;
+
+    .icon.more {
+      margin-top: 14px;
+      margin-right: -16px;
     }
   }
 }

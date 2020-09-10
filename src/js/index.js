@@ -72,8 +72,30 @@ const init_slides = function() {
   })
 }
 
+const create_own_chat_message = function() {
+
+}
+
+const create_guest_chat_message = function() {
+ 
+}
+
 // Make sure i answer questions, would be rude not to
 const init_chat = async function() {
+
+  /*
+          <article class="media">
+            <figure class="media-left mx-0 mt-0">
+              <div class="image is-96x96">
+                <p class="my-0 is-size-1 pt-2">J</p>
+              </div>
+            </figure>
+            <div class="media-content pb-1">
+              <h5 class="title is-4 mt-5 mb-0">Johan</h5>
+              <p class="mt-3">Als je nog vragen hebt kun je er hier een aantal stellen, ik zal m'n best doen ze zo goed mogelijk te beantwoorden.</p>
+            </div>
+          </article>
+          */
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
