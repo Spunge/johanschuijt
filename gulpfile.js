@@ -28,8 +28,8 @@ const reload_html = function() {
 const copy_original_images = function() {
   return src('src/img/*.jpg')
     .pipe(resize({
-      width: 4200,
-      height: 2800,
+      width: 3900,
+      height: 2600,
       crop: true,
       upscale: false,
     }))

@@ -9,8 +9,13 @@ $body-line-height: 1.6;
 
 @import "node_modules/bulma/sass/utilities/_all.sass";
 @import "node_modules/bulma/sass/helpers/_all.sass";
+$link: findDarkColor($green);
+$footer-background-color: $black-ter;
+$footer-padding: 1.5rem 1.5rem !default
+
 @import "node_modules/bulma/sass/base/generic.sass";
 @import "node_modules/bulma/sass/layout/section.sass";
+@import "node_modules/bulma/sass/layout/footer.sass";
 @import "node_modules/bulma/sass/grid/columns.sass";
 @import "node_modules/bulma/sass/elements/container.sass";
 @import "node_modules/bulma/sass/elements/content.sass";
@@ -19,7 +24,107 @@ $body-line-height: 1.6;
 @import "node_modules/bulma/sass/elements/tag.sass";
 @import "node_modules/bulma/sass/components/media.sass";
 
+@import "node_modules/bulma-timeline/src/sass/index.sass";
+
 $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (preloader, PNG and SVG sprite)
 
 @import "node_modules/photoswipe/src/css/main.scss";
 @import "node_modules/photoswipe/src/css/default-skin/default-skin.scss";
+
+@import "icons.scss";
+
+.zoom-hint {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 42px;
+  height: 42px;
+
+  pointer-events: none;
+  transform: scale(2.0);
+}
+
+.chat {
+  $triangle-size: 20px;
+  $triangle-top-margin: 30px;
+  $border-color: $grey-lightest;
+  $padding: 2rem;
+
+  .media {
+    border-top: none;
+  }
+
+  .media-content {
+    position: relative;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    padding: 0 $padding;
+    margin-right: 1.5rem;
+    overflow-x: visible;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: $triangle-top-margin;
+      right: (-0.5 * $triangle-size) - 1px;
+      width: $triangle-size;
+      height: $triangle-size;
+      border: 1px solid $border-color;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: $triangle-top-margin;
+      right: (-0.5 * $triangle-size) + 1px;
+      border: 1px solid #fff;
+      width: $triangle-size;
+      height: $triangle-size;
+      background-color: #fff;
+      transform: rotate(45deg);
+    }
+  }
+
+  .media-left + .media-content {
+    margin-left: 1.5rem;
+    margin-right: 0;
+
+    &::before {
+      left: (-0.5 * $triangle-size) - 1px;
+      right: auto;
+    }
+
+    &::after {
+      left: (-0.5 * $triangle-size) + 1px;
+      right: auto;
+    }
+  }
+
+  .image {
+    background-color: findDarkColor($green);
+    border-radius: 50%;
+    color: #fff;
+
+    p {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .media-content + .media-right .image {
+    background-color: findDarkColor($red);
+  }
+
+  .questions {
+    margin-top: 2rem;
+    .question {
+      display: block;
+      padding: 0.5rem $padding;
+      margin-bottom: 1rem;
+      border: 1px solid $border-color;
+    }
+  }
+}

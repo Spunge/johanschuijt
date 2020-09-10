@@ -9,15 +9,28 @@
   <body class="is-marginless">
     <section class="section is-paddingless">
       <div class="columns is-gapless">
-        <div class="column">
-          <figure class="image is-square is-marginless">
-            <img class="slide" src="dist/img/thumb/1.jpg">
-          </figure>
+        <div class="column is-relative">
+          <a class="slide" href="dist/img/original/1.jpg">
+            <figure class="image is-square is-marginless">
+              <img src="dist/img/thumb/1.jpg">
+            </figure>
+          </a>
+
+          <div class="zoom-hint is-hidden-tablet">
+            <div class="icon magnify"></div>
+          </div>
         </div>
-        <div class="column is-hidden-mobile">
-          <figure class="image is-square is-marginless">
-            <img class="slide" src="dist/img/thumb/2.jpg">
-          </figure>
+
+        <div class="column is-relative is-hidden-mobile">
+          <a class="slide" href="dist/img/original/2.jpg">
+            <figure class="image is-square is-marginless">
+              <img src="dist/img/thumb/2.jpg">
+            </figure>
+          </a>
+
+          <div class="zoom-hint">
+            <div class="icon magnify"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -33,15 +46,27 @@
 
     <section class="section is-paddingless">
       <div class="columns is-gapless">
-        <div class="column">
-          <figure class="image is-square is-marginless">
-            <img class="slide" src="dist/img/thumb/3.jpg">
-          </figure>
+        <div class="column is-relative">
+          <a class="slide" href="dist/img/original/4.jpg">
+            <figure class="image is-square is-marginless">
+              <img src="dist/img/thumb/4.jpg">
+            </figure>
+          </a>
+
+          <div class="zoom-hint is-hidden-tablet">
+            <div class="icon magnify"></div>
+          </div>
         </div>
-        <div class="column is-hidden-mobile">
-          <figure class="image is-square is-marginless">
-            <img class="slide" src="dist/img/thumb/1.jpg">
-          </figure>
+        <div class="column is-relative is-hidden-mobile">
+          <a class="slide" href="dist/img/original/1.jpg">
+            <figure class="image is-square is-marginless">
+              <img src="dist/img/thumb/3.jpg">
+            </figure>
+          </a>
+
+          <div class="zoom-hint">
+            <div class="icon magnify"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -56,112 +81,130 @@
         <hr class="my-6">
         <h3 class="title is-4">Tijdslijn</h3>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2002</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
-          </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">Gymnasium</strong> <small>@ GSG Schagen</small></h5>
-            <p>Natuur en techniek profiel. Om diverse redenen ging ik in de 4e niet veel meer naar school en werd ik doorverwezen naar het MBO.</p>
-          </div>
-        </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2007</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
+        <div class="timeline">
+          <header class="timeline-header">
+            <span class="tag is-dark is-large">2002</span>
+          </header>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Gymnasium</strong> <small>@ GSG Schagen</small></h5>
+              <p>Natuur en techniek profiel. Om diverse redenen ging ik in de 4e niet veel meer naar school en werd ik doorverwezen naar het MBO.</p>
+            </div>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">ICT</strong> <small>@ Horizon College</small></h5>
-            <p>Tja, mijn MBO dagen... De stap van het gymnasium naar MBO niveau 3 was kortgezegd groot, ik heb het hier dan ook niet lang uitgehouden.</p>
-          </div>
-        </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2008</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
+          <header class="timeline-header">
+            <span class="tag is-dark is-large">2007</span>
+          </header>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">ICT</strong> <small>@ Horizon College</small></h5>
+              <p>Tja, mijn MBO dagen... De stap van het gymnasium naar MBO niveau 3 was kortgezegd groot, ik heb het hier dan ook niet lang uitgehouden.</p>
+            </div>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">Havo</strong> <small>@ Luzac College</small></h5>
-            <p>In t privaatonderwijs in een jaar een HAVO diploma gehaald, ik heb dit jaar ook diverse beta vakken op VWO niveau gevolgd.</p>
-          </div>
-        </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2009</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
+          <div class="timeline-header">
+            <span class="tag is-dark is-large">2008</span>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">Game Development</strong> <small>@ Hogeschool van Amsterdam</small></h5>
-            <p>Na m'n havo diploma te halen en te jong te zijn om een toelatingsexamen voor de universiteit (colloquium doctum) te kunnen doen heb ik gekozen voor een HBO game development. Ik leek echter de enige in de klas die games wou maken in plaats van spelen.</p>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Havo</strong> <small>@ Luzac College</small></h5>
+              <p>In t privaatonderwijs in een jaar een HAVO diploma gehaald, ik heb dit jaar ook diverse beta vakken op VWO niveau gevolgd.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2010</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
+          <div class="timeline-header">
+            <span class="tag is-dark is-large">2009</span>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">Media Technology</strong> <small>@ Hogeschool Utrecht</small></h5>
-            <p>Na de vorige tegenvallende HBO opleiding heb ik gekozen voor media technologie. Het enige vak wat me boeide en helemaal gevolgd heb hier is Sound Design, de rest van de vakken (programmeren, webdesign) had ik te veel voorkennis voor.</p>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Game Development</strong> <small>@ Hogeschool van Amsterdam</small></h5>
+              <p>Na m'n havo diploma te halen en te jong te zijn om een toelatingsexamen voor de universiteit (colloquium doctum) te kunnen doen heb ik gekozen voor een HBO game development. Ik leek echter de enige in de klas die games wou maken in plaats van spelen.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2011</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
+          <div class="timeline-header">
+            <span class="tag is-dark is-large">2010</span>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">Freelance Developer</strong></h5>
-            <p>Ik heb in deze tijd veel informationele websites gebouwd, en een stockmanagement systeem voor een transportbedrijf.</p>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Media Technology</strong> <small>@ Hogeschool Utrecht</small></h5>
+              <p>Na de vorige tegenvallende HBO opleiding heb ik gekozen voor media technologie. Het enige vak wat me boeide en helemaal gevolgd heb hier is Sound Design, de rest van de vakken (programmeren, webdesign) had ik te veel voorkennis voor.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2012</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
+          <div class="timeline-header">
+            <span class="tag is-dark is-large">2011</span>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">Designer/Frontend Developer</strong> <small>@ 1200 Web Development</small></h5>
-            <p>Veel gewerkt aan 2 grote webshops. Ik heb toendertijd een complete webshop ontworpen en geimplementeerd op het PHP framework wat intern binnen dit bedrijf was ontwikkeld.</p>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Freelance Developer</strong></h5>
+              <p>Ik heb in deze tijd veel informationele websites gebouwd, en een stockmanagement systeem voor een transportbedrijf.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2014</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
+          <div class="timeline-header">
+            <span class="tag is-dark is-large">2012</span>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">Freelance Developer</strong></h5>
-            <p>Verschillende websites/web-apps en API's ontwikkeld voor diverse partijen. Hosting strategie verzorgd voor een webdesignbureau.</p>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Designer/Frontend Developer</strong> <small>@ 1200 Web Development</small></h5>
+              <p>Veel gewerkt aan 2 grote webshops. Ik heb toendertijd een complete webshop ontworpen en geimplementeerd op het PHP framework wat intern binnen dit bedrijf was ontwikkeld.</p>
+            </div>
           </div>
-        </div>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Cryptominer</strong></h5>
+              <p>Eigen cryptorig gebouwd om litecoin mee te minen. Een zware voeding, 4 nieuwe GPU's, een oud moederboard en een usb-stick met linux.</p>
+            </div>
+          </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p class="mb-0"><span class="tag is-dark is-large">2017</span></p>
-            <p class="has-text-centered is-size-2 mt-0">&darr;</p>
+          <div class="timeline-header">
+            <span class="tag is-dark is-large">2014</span>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">Backend Developer</strong> <small>@ forest.host</small></h5>
-            <p>Complete backend voor een nieuw serverless hostingplatform gebouwd gebruik makende van een microservice architectuur met veel verschillende bewegende onderdelen.</p>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Freelance Developer</strong></h5>
+              <p>Verschillende websites/web-apps en API's ontwikkeld voor diverse partijen.</p>
+            </div>
           </div>
-        </div>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">DevOps Engineer</strong></h5>
+              <p>DevOps/Hosting strategie verzorgd voor een ontwikkelbureau.</p>
+            </div>
+          </div>
 
-        <div class="media">
-          <div class="media-left">
-            <p><span class="tag is-dark is-large">2020</span></p>
+          <div class="timeline-header">
+            <span class="tag is-dark is-large">2017</span>
           </div>
-          <div class="media-content">
-            <h5 class="mt-5"><strong class="title is-5">De Toekomst</strong></h5>
-            <p>Nu het hostingplatform op een stabiel punt is gekomen wordt het tijd om mijn aandacht weer ergens anders op te gaan richten.</p>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Freelance Developer</strong></h5>
+              <p>Uren administratie ontwikkeld voor een bijlesbureau.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker mt-2"></div>
+            <div class="timeline-content">
+              <h5 class="mt-0"><strong class="title is-5">Backend Developer</strong> <small>@ forest.host</small></h5>
+              <p>Een nieuw serverless hostingplatform gebouwd gebruik makende van een microservice architectuur met veel verschillende bewegende onderdelen.</p>
+            </div>
+          </div>
+
+          <div class="timeline-header">
+            <span class="tag is-dark is-large">2020</span>
           </div>
         </div>
 
@@ -173,15 +216,27 @@
 
     <section class="section is-paddingless">
       <div class="columns is-gapless">
-        <div class="column">
-          <figure class="image is-square is-marginless">
-            <img class="slide" src="dist/img/thumb/2.jpg">
-          </figure>
+        <div class="column is-relative">
+          <a class="slide" href="dist/img/original/2.jpg">
+            <figure class="image is-square is-marginless">
+              <img src="dist/img/thumb/2.jpg">
+            </figure>
+          </a>
+
+          <div class="zoom-hint is-hidden-tablet">
+            <div class="icon magnify"></div>
+          </div>
         </div>
-        <div class="column is-hidden-mobile">
-          <figure class="image is-square is-marginless">
-            <img class="slide" src="dist/img/thumb/3.jpg">
-          </figure>
+        <div class="column is-relative is-hidden-mobile">
+          <a class="slide" href="dist/img/original/3.jpg">
+            <figure class="image is-square is-marginless">
+              <img src="dist/img/thumb/3.jpg">
+            </figure>
+          </a>
+
+          <div class="zoom-hint is-hidden-mobile">
+            <div class="icon magnify"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -189,19 +244,64 @@
     <section class="section">
       <div class="container is-size-5">
         <h2 class="title">Mijn toekomst</h2>
-        <p>Na een aantal jaar al mijn aandacht te richten op het opzetten van forest.host ben ik overgestapt op het verbreden van mijn horizon. Ik ben meer aandacht aan het richten op het maken van muziek en wil naast forest ook weer werken aan een ander project.</p>
+        <p>Na een aantal jaar al mijn aandacht te richten op het opzetten van <a href="https://forest.host" target="_blank">forest.host</a> ben ik overgestapt op het verbreden van mijn horizon. Ik ben meer aandacht aan het richten op het maken van muziek en wil naast forest ook weer werken aan een ander project.</p>
 
         <hr class="my-6">
         <h3 class="title is-4">Persoonlijke ontwikkeling</h3>
-        <p>Ik was zo verloren in de computer dat ik menselijk contact begon te missen, daarom ben ik weer aan het investeren in mijn muziek. Ik drum in 2 bands en ben mijn eigen drummachine aan het bouwen, daarnaast klim (boulderen) en lees ik veel.</p>
+        <p>Ik was zo verloren in de computer dat ik menselijk contact begon te missen, daarom ben ik weer aan het investeren in mijn muziek. Ik drum in 2 bands en ben mijn eigen <a href="https://github.com/Spunge/octothorpe" target="_blank">drummachine</a> aan het bouwen, daarnaast klim (boulderen) en lees ik veel.</p>
 
         <hr class="my-6">
-        <h3 class="title is-4">Waar zoek ik naar?</h3>
-        <p>Comfortabel in groot bestaand NodeJS prnnenoject in middelgrote organistatie / middelgroot rust project in kleine organisatie.</p>
+        <h3 class="title is-4">Wat is voor mij een ideaal project?</h3>
+        <p>Comfortabel in groot bestaand NodeJS prnnenoject in middelgrote organistatie / middelgroot rust project in kleine organisatie. Projectmanager die goed overzicht bewaard.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-size-5">
+        <h2 class="title">Contact</h2>
+        <p>Hou niet van social media maar je kunt me <span class="inline-icon"><span class="mail icon"></span></span>mailen / <span class="inline-icon"><span class="audio icon"></span></span>bellen (als je recruiter bent dan niet)</p>
+
+        <hr class="my-6">
+
+        <div class="chat">
+          <article class="media">
+            <figure class="media-left mx-0 mt-0">
+              <div class="image is-96x96">
+                <p class="my-0 is-size-1 pt-2">J</p>
+              </div>
+            </figure>
+            <div class="media-content pb-1">
+              <h5 class="title is-4 mt-5 mb-0">Johan</h5>
+              <p class="mt-3">Als je nog vragen hebt kun je er hier een aantal stellen, ik zal m'n best doen ze zo goed mogelijk te beantwoorden.</p>
+            </div>
+          </article>
+
+          <article class="media">
+            <div class="media-content pb-1">
+              <h5 class="title is-4 mt-5 mb-0">Gast</h5>
+              <p class="mt-3">Ik heb zeker nog vragen, zou je me kunnen vertellen waarom je dit soort chatscripts maakt?</p>
+            </div>
+            <figure class="media-right mx-0 mt-0">
+              <div class="image is-96x96">
+                <p class="my-0 is-size-1 pt-2">G</p>
+              </div>
+            </figure>
+          </article>
+
+          <div class="questions">
+            <a class="question">Waar leef jij nou eigenlijk voor?</a>
+            <a class="question">Wat is je favoriete kleur?</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <footer class="footer">
+      <section class="section content py-0">
+        <div class="container has-text-right">
+          <p>Made with Linux @ Utrecht 2020</p>
+        </div>
+      </div>
     </footer>
 
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
@@ -248,8 +348,6 @@
             </div>
         </div>
     </div>
-
-
 
     <!-- Core JS file -->
     <script src="dist/js/photoswipe.min.js"></script> 
