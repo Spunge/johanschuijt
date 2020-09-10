@@ -18,3 +18,8 @@ $body-line-height: 1.6;
 @import "node_modules/bulma/sass/elements/title.sass";
 @import "node_modules/bulma/sass/elements/tag.sass";
 @import "node_modules/bulma/sass/components/media.sass";
+
+$pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (preloader, PNG and SVG sprite)
+
+@import "node_modules/photoswipe/src/css/main.scss";
+@import "node_modules/photoswipe/src/css/default-skin/default-skin.scss";
