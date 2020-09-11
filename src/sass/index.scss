@@ -91,6 +91,10 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
     }
   }
 
+  .media-left, .media-right {
+    margin-bottom: 0 !important;
+  }
+
   .media-left + .media-content {
     margin-left: 1.5rem;
     margin-right: 0;
@@ -132,7 +136,12 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
     }
   }
 
+  .messages.typing + .is-typing {
+    visibility: visible;
+  }
+
   .is-typing {
+    visibility: hidden;
     padding-right: 18px;
     color: $grey-light;
 

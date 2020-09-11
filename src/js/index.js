@@ -2,17 +2,17 @@
 let chat_config = {
   "previous": [
     {
-      "question": "Hmm, interessant, kunnen we het over iets anders hebben?",
+      "short": "Hmm, interessant, kunnen we het over iets anders hebben?",
       "answer": "Tuurlijk, wat wil je weten?"
     },
     {
-      "question": "Okay, genoeg hierover.",
+      "short": "Okay, genoeg hierover.",
       "answer": "Ehh, wil je nog iets anders weten?"
     }
   ],
   "questions": {
     "start": {
-      "answer": "Als je nog vragen hebt kun je er hier een aantal stellen, ik zal m'n best doen ze zo goed mogelijk te beantwoorden.",
+      "answer": "Als je nog vragen hebt kun je er hier een paar stellen, ik zal m'n best doen ze zo goed mogelijk te beantwoorden.",
       "sequels": ["what_chatbot", "why_live", "what_color"]
     },
     "what_chatbot": {
@@ -72,30 +72,154 @@ const init_slides = function() {
   })
 }
 
-const create_own_chat_message = function() {
+const create_chat_message_image = function(name, position = 'left') {
+  let figure = document.createElement('figure');
+  figure.classList.add(`media-${position}`, 'mx-0', 'mt-0');
+  let image = document.createElement('div');
+  image.classList.add('image', 'is-96x96');
 
+  let image_name = document.createElement('p');
+  image_name.classList.add('my-0', 'is-size-1', 'pt-2');
+  image_name.innerHTML = name;
+
+  image.append(image_name);
+  figure.append(image);
+  return figure;
 }
 
-const create_guest_chat_message = function() {
- 
+const create_chat_message_content = function(name, text) {
+  let content = document.createElement('div');
+  content.classList.add('media-content', 'pb-1');
+
+  let content_name = document.createElement('h5');
+  content_name.classList.add('title', 'is-4', 'mt-5', 'mb-0');
+  content_name.innerHTML = name;
+  let content_text = document.createElement('p');
+  content_text.classList.add('mt-3');
+  content_text.innerHTML = text;
+
+  content.append(content_name, content_text);
+
+  return content;
+}
+
+const create_own_chat_message = function(text) {
+  let image = create_chat_message_image('J', 'left');
+  let content = create_chat_message_content('Johan', text);
+
+  let article = document.createElement('article');
+  article.classList.add("media");
+  article.append(image, content);
+
+  return article;
+}
+
+const create_guest_chat_message = function(text) {
+  let image = create_chat_message_image('G', 'right');
+  let content = create_chat_message_content('Gast', text);
+
+  let article = document.createElement('article');
+  article.classList.add("media");
+  article.append(content, image);
+
+  return article;
+}
+
+// Create chat question element
+const create_chat_question = function(question_config) {
+  let anchor = document.createElement('a');
+  anchor.classList.add('question');
+  anchor.innerHTML = question_config.short;
+
+  anchor.addEventListener('click', e => {
+    e.preventDefault();
+    // If this question does not have a tag, it's a "previous" question, so pop history
+    if( ! question_config.hasOwnProperty('tag')) {
+      let config = chat_history.pop();
+    }
+
+    ask_question(question_config);
+  });
+
+  return anchor;
+}
+
+let chat_history = [];
+
+// Load questions into DOM
+const set_questions = function(questions) {
+  let container = document.querySelectorAll('.chat .questions')[0];
+  container.innerHTML = '';
+  container.append(...questions);
+}
+
+// Get question config blob
+const get_question_config = function(tag) {
+  let question = JSON.parse(JSON.stringify(chat_config.questions[tag]));
+  question.tag = tag;
+
+  if( ! question.sequels) {
+    question.sequels = [];
+  }
+
+  return question;
+}
+
+const delay = function(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const get_random_back_question = function() {
+  let index = Math.floor(Math.random() * chat_config.previous.length);
+  return JSON.parse(JSON.stringify(chat_config.previous[index]));
+}
+
+const ask_question = async function(config) {
+  let container = document.querySelectorAll('.chat .messages')[0];
+
+  // Only ask questions when we're not answering a question now
+  if( ! container.classList.contains('answering')) {
+    container.classList.add('answering');
+
+    // If this has a tag, it's an actual question, if not, it's a "previous" question
+    if(config.hasOwnProperty('tag')) {
+      chat_history.push(config);
+    }
+
+    if(config.hasOwnProperty('long') || config.hasOwnProperty('short')) {
+      container.append(create_guest_chat_message(config.hasOwnProperty('long') ? config.long : config.short));
+    }
+
+    await delay((Math.random() * 500) + 250);
+    container.classList.add('typing');
+
+    await delay(config.answer.length * 15 + 500);
+    container.append(create_own_chat_message(config.answer));
+    container.classList.remove('typing');
+
+    let questions = config.sequels
+      .map(tag => get_question_config(tag))
+      .map(question_config => create_chat_question(question_config));
+
+    if(chat_history.length > 1) {
+      let back_question = get_random_back_question();
+      back_question.sequels = chat_history[chat_history.length - 2].sequels;
+
+      questions.push(create_chat_question(back_question));
+    }
+
+    set_questions(questions);
+
+    container.classList.remove('answering');
+
+  }
 }
 
 // Make sure i answer questions, would be rude not to
 const init_chat = async function() {
-
-  /*
-          <article class="media">
-            <figure class="media-left mx-0 mt-0">
-              <div class="image is-96x96">
-                <p class="my-0 is-size-1 pt-2">J</p>
-              </div>
-            </figure>
-            <div class="media-content pb-1">
-              <h5 class="title is-4 mt-5 mb-0">Johan</h5>
-              <p class="mt-3">Als je nog vragen hebt kun je er hier een aantal stellen, ik zal m'n best doen ze zo goed mogelijk te beantwoorden.</p>
-            </div>
-          </article>
-          */
+  let question_config = JSON.parse(JSON.stringify(chat_config.questions.start));
+  question_config.tag = 'start';
+  ask_question(question_config);
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
