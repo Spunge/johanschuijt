@@ -57,7 +57,6 @@ const copy_photoswipe = function() {
 }
 
 exports.default = () => {
-  livereload.listen();
   copy_original_images();
   create_thumbs();
   copy_photoswipe();
@@ -66,4 +65,5 @@ exports.default = () => {
   watch('src/sass/**/*.scss', compile_sass);
   watch('src/js/**/*.js', compile_js);
   watch('*.html', reload_html);
+  livereload.listen();
 }
