@@ -174,6 +174,25 @@ const get_random_back_question = function() {
   return JSON.parse(JSON.stringify(chat_config.previous[index]));
 }
 
+const get_absolute_height = function(element) {
+  // Get the DOM Node if you pass in a string
+  var styles = window.getComputedStyle(element);
+  var margin = parseFloat(styles['marginTop']) + parseFloat(styles['marginBottom']);
+
+  return Math.ceil(element.offsetHeight + margin);
+}
+
+const append_message = function(container, message) {
+  container.append(message);
+
+  let bounding = message.getBoundingClientRect();
+  let message_in_viewport = bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+
+  if(message_in_viewport) {
+    document.documentElement.scrollTop += get_absolute_height(message);
+  }
+}
+
 const ask_question = async function(config) {
   let container = document.querySelectorAll('.chat .messages')[0];
 
@@ -187,14 +206,17 @@ const ask_question = async function(config) {
     }
 
     if(config.hasOwnProperty('long') || config.hasOwnProperty('short')) {
-      container.append(create_guest_chat_message(config.hasOwnProperty('long') ? config.long : config.short));
+      let question = create_guest_chat_message(config.hasOwnProperty('long') ? config.long : config.short);
+      append_message(container, question);
     }
 
     await delay((Math.random() * 500) + 250);
     container.classList.add('typing');
 
     await delay(config.answer.length * 15 + 500);
-    container.append(create_own_chat_message(config.answer));
+    let answer = create_own_chat_message(config.answer);
+    append_message(container, answer);
+
     container.classList.remove('typing');
 
     let questions = config.sequels
@@ -211,7 +233,6 @@ const ask_question = async function(config) {
     set_questions(questions);
 
     container.classList.remove('answering');
-
   }
 }
 
