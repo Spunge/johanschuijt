@@ -8,17 +8,124 @@ let chat_config = {
     {
       "short": "Okay, genoeg hierover.",
       "answer": "Ehh, wil je nog iets anders weten?"
+    },
+    {
+      "short": "Alright, even wat anders...",
+      "answer": "Hmmm, wat dan?",
+    },
+    {
+      "short": "Wouw, nice, dat wist ik niet.",
+      "answer": "Ha, zo leer je elke dag weer wat!",
+    },
+    {
+      "short": "Okay, dope.",
+      "answer": "Ha, als jij t zegt.",
+    },
+    {
+      "short": "Alright, kunnen we nog even terug?",
+      "answer": "Sure, wat wilde je nog vragen?",
+    },
+    {
+      "short": "Eeeeh, pfff, hier wil ik niet over praten okay?",
+      "answer": "Oh ja, okay, is goed, waar dan wel over?",
+    },
+    {
+      "short": "Thanks voor de informatie!",
+      "answer": "Graag gedaan, ik hoop dat je er iets mee kunt.",
     }
   ],
   "questions": {
     "start": {
       "answer": "Als je nog vragen hebt kun je er hier een paar stellen, ik zal m'n best doen ze zo goed mogelijk te beantwoorden.",
-      "sequels": ["what_chatbot", "why_live", "what_color"]
+      "sequels": ["what_chatbot", "what_past", "what_now", "why_no_social"],
+    },
+    "why_no_social": {
+      "short": "Waarom heb je geen social media?",
+      "answer": "Omdat ik niet als product verhandeld wil worden door grote techpartijen. Daarnaast wil ik mezelf niet in een mal laten gieten, ik maak m'n eigen webpagina wel.",
+      "sequels": ["what_social_miss_out"],
+    },
+    "what_social_miss_out": {
+      "short": "Mis je dan geen sociale evenementen of andere dingen?",
+      "answer": "Nee, eigenlijk niet, chat is genoeg om overal van op de hoogte te blijven eigenlijk.",
     },
     "what_chatbot": {
-      "short": "Wat? Een chatbot?",
+      "short": "Wat is dit nou weer, een chatbot?",
       "long": "Ehhh, serieus, praat ik nu met een chatbot?",
-      "answer": "Nee, je doorloopt een vooraf gecreerde vraag/antwoord graaf."
+      "answer": "Nee, je doorloopt een vooraf gecreerde vraag/antwoord graaf.",
+      "sequels": ["where_idea_chatbot", "why_no_faq"],
+    },
+    "why_no_faq": {
+      "short": "Wow, vreemd, waarom geen FAQ?",
+      "answer": "Omdat dit een stuk persoonlijker voelt vind je niet?",
+      "previous": [{
+        "short": "Ja, best wel..",
+        "answer": "Ha, dat hoor ik graag.",
+      }, {
+        "short": "Valt mee man, voelt alsof ik met een computer praat.",
+        "answer": "Dat is ook zo...",
+      }],
+    },
+    "where_idea_chatbot": {
+      "short": "Hoe ben je op dat idee gekomen?",
+      "answer": "Deze techniek wordt veel gebruikt in games voor non-player-characters.",
+    },
+    "what_now": {
+      "short": "Ik wil wat meer weten over je huidige woon/werk situatie, kan je daar wat over vertellen?",
+      "answer": "Natuurlijk, ik woon aan de Utrechtseweg tussen Utrecht en de Bilt in en ik werk aan de Gruttersdijk in Utrecht.",
+      "sequels": ["where_live", "where_work"],
+    },
+    "what_past": {
+      "short": "Kan ik je nog wat vragen over je verleden?",
+      "answer": "Natuurlijk, ik heb nogal wat achter de rug, wat zou je willen weten?",
+      "sequels": ["what_childhood", "why_mid_school_sent_away"],
+    },
+    "what_childhood": {
+      "short": "Hoe was je kindertijd?",
+      "answer": "Ik groeide op in een klein Noord-Hollands dorpje waar alle ruimte was om buiten te spelen en hutten te bouwen, wat ik ook veel gedaan heb.",
+      "sequels": ["how_relation_parents", "how_young_social_life", "what_young_build"],
+    },
+    "what_young_build": {
+      "short": "Hutten bouwen, nice!",
+      "answer": "Ja, daar heb ik veel handigheid aan over gehouden.",
+      "previous": [{
+        "short": "Fijn man.",
+        "answer": "Yeah!",
+      }],
+    },
+    "why_mid_school_sent_away": {
+      "short": "Waarom heb je je gymnasium niet afgemaakt?",
+      "answer": "Omdat ik de 3e klas over moest doen om een flauwe reden, waardoor ik m'n vertrouwen in de school verloor. Door het verlies van dat vertrouwen ben ik op een gegeven moment eigenlijk niet echt meer naar de lessen en toetsen gegaan, waar de school het absoluut niet mee eens was.",
+      "previous": [
+        {
+          "short": "Hmmm, dat is ruk man...",
+          "answer": "Zo voelde het toen wel, maar achteraf ben ik blij dat ik veel verschillende opleidingen even meegemaakt heb.",
+        },
+        {
+          "short": "Heb je dar geen spijt van?",
+          "answer": "Ja, soms vindt ik het wel jammer dat ik hierdoor de universiteit misgelopen ben, maar ik heb wel geleerd voor mezelf te denken.",
+        },
+      ],
+    },
+    "how_young_social_life": {
+      "short": "Hoe was je sociale leven in dat dorp?",
+      "answer": "Niet slecht. Ik was een slimme jongen in een klein dorp, dus viel ik soms een beetje buiten de boot, maar ik heb er wel altijd vrienden gehad.",
+    },
+    "how_relation_parents": {
+      "short": "Hoe was de relatie met je ouders toendertijd?",
+      "answer": "Goed, ik ben opgegroeid met 2 liefhebbende ouders.",
+    },
+    "where_live": {
+      "short": "Waar heb je voor de rest nog gewoond?",
+      "answer": "Ik heb een aantal jaar in Maassluis en Rotterdam gewoond, en op veel verschillende plekken in Utrecht gewoond.",
+      "sequels": ["why_many_living_places"],
+    },
+    "why_many_living_places": {
+      "short": "Hoezo veel plekken?",
+      "answer": "Ik heb in bijna elke wijk in Utrecht wel even gewoond. Dit mede door een jaar kamers onder te huren om zo de stad en veel mensen te leren kennen.",
+    },
+    "where_work": {
+      "short": "Heb je je eigen werkplek?",
+      "answer": "Yes, ik huur een bureau in een broedplaats aan de Gruttersdijk in Utrecht",
     },
     "what_color": {
       "short": "Wat is je favoriete kleur?",
@@ -169,9 +276,9 @@ const delay = function(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const get_random_back_question = function() {
-  let index = Math.floor(Math.random() * chat_config.previous.length);
-  return JSON.parse(JSON.stringify(chat_config.previous[index]));
+const get_random_back_question = function(options) {
+  let index = Math.floor(Math.random() * options.length);
+  return JSON.parse(JSON.stringify(options[index]));
 }
 
 const get_absolute_height = function(element) {
@@ -213,9 +320,9 @@ const ask_question = async function(config) {
     await delay((Math.random() * 500) + 250);
     container.classList.add('typing');
 
-    await delay(config.answer.length * 15 + 500);
-    let answer = create_own_chat_message(config.answer);
-    append_message(container, answer);
+    await delay(config.answer.length * 12 + 250);
+    let answer_element = create_own_chat_message(config.answer);
+    append_message(container, answer_element);
 
     container.classList.remove('typing');
 
@@ -224,10 +331,20 @@ const ask_question = async function(config) {
       .map(question_config => create_chat_question(question_config));
 
     if(chat_history.length > 1) {
-      let back_question = get_random_back_question();
-      back_question.sequels = chat_history[chat_history.length - 2].sequels;
+      let back_questions = config.hasOwnProperty('previous') ? config.previous : [get_random_back_question(chat_config.previous)];
 
-      questions.push(create_chat_question(back_question));
+      // Add sequels to back questions && add them to questions
+      questions.push(...back_questions.map(back_question => {
+        let old_question = chat_history[chat_history.length - 2];
+
+        ['sequels', 'previous'].forEach(key => {
+          if(old_question.hasOwnProperty(key)) {
+            back_question[key] = old_question[key];
+          }
+        });
+
+        return create_chat_question(back_question);
+      }));
     }
 
     set_questions(questions);
