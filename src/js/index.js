@@ -1,39 +1,30 @@
 
 let chat_config = {
-  "previous": [
-    {
-      "short": "Hmm, interessant, kunnen we het over iets anders hebben?",
-      "answer": "Tuurlijk, wat wil je weten?"
-    },
-    {
-      "short": "Okay, genoeg hierover.",
-      "answer": "Ehh, wil je nog iets anders weten?"
-    },
-    {
-      "short": "Alright, even wat anders...",
-      "answer": "Hmmm, wat dan?",
-    },
-    {
-      "short": "Wouw, nice, dat wist ik niet.",
-      "answer": "Ha, zo leer je elke dag weer wat!",
-    },
-    {
-      "short": "Okay, dope.",
-      "answer": "Ha, als jij t zegt.",
-    },
-    {
-      "short": "Alright, kunnen we nog even terug?",
-      "answer": "Sure, wat wilde je nog vragen?",
-    },
-    {
-      "short": "Eeeeh, pfff, hier wil ik niet over praten okay?",
-      "answer": "Oh ja, okay, is goed, waar dan wel over?",
-    },
-    {
-      "short": "Thanks voor de informatie!",
-      "answer": "Graag gedaan, ik hoop dat je er iets mee kunt.",
-    }
-  ],
+  "previous": [{
+    "short": "Hmm, interessant, kunnen we het over iets anders hebben?",
+    "answer": "Tuurlijk, wat wil je weten?"
+  }, {
+    "short": "Okay, genoeg hierover.",
+    "answer": "Ehh, wil je nog iets anders weten?"
+  }, {
+    "short": "Alright, even wat anders...",
+    "answer": "Hmmm, wat dan?",
+  }, {
+    "short": "Wouw, nice, dat wist ik niet.",
+    "answer": "Ha, zo leer je elke dag weer wat!",
+  }, {
+    "short": "Okay, dope.",
+    "answer": "Ha, als jij t zegt.",
+  }, {
+    "short": "Alright, kunnen we nog even terug?",
+    "answer": "Sure, wat wilde je nog vragen?",
+  }, {
+    "short": "Eeeeh, pfff, hier wil ik niet over praten okay?",
+    "answer": "Oh ja, okay, is goed, waar dan wel over?",
+  }, {
+    "short": "Thanks voor de informatie!",
+    "answer": "Graag gedaan, ik hoop dat je er iets mee kunt.",
+  }],
   "questions": {
     "start": {
       "answer": "Als je nog vragen hebt kun je er hier een paar stellen, ik zal m'n best doen ze zo goed mogelijk te beantwoorden.",
@@ -70,9 +61,9 @@ let chat_config = {
       "answer": "Deze techniek wordt veel gebruikt in games voor non-player-characters.",
     },
     "what_now": {
-      "short": "Ik wil wat meer weten over je huidige woon/werk situatie, kan je daar wat over vertellen?",
-      "answer": "Natuurlijk, ik woon aan de Utrechtseweg tussen Utrecht en de Bilt in en ik werk aan de Gruttersdijk in Utrecht.",
-      "sequels": ["where_live", "where_work"],
+      "short": "Ik wil wat meer weten over je huidige situatie, kan je daar wat over vertellen?",
+      "answer": "Natuurlijk, wat voor onderwerp zou je meer over willen weten?.",
+      "sequels": ["where_live", "where_work", "why_live"],
     },
     "what_past": {
       "short": "Kan ik je nog wat vragen over je verleden?",
@@ -93,15 +84,15 @@ let chat_config = {
       }],
     },
     "why_mid_school_sent_away": {
-      "short": "Waarom heb je je gymnasium niet afgemaakt?",
-      "answer": "Omdat ik de 3e klas over moest doen om een flauwe reden, waardoor ik m'n vertrouwen in de school verloor. Door het verlies van dat vertrouwen ben ik op een gegeven moment eigenlijk niet echt meer naar de lessen en toetsen gegaan, waar de school het absoluut niet mee eens was.",
+      "short": "Ruige schooltijd zo te zien, waarom was dat?",
+      "answer": "Omdat ik voor mezelf dacht en de lessen voor mij niet of nauwelijks uitdagend waren, hierdoor was ik verveeld in lessen, wat voor niemand goed was, niet voor de leraar en niet voor mij.",
       "previous": [
         {
-          "short": "Hmmm, dat is ruk man...",
-          "answer": "Zo voelde het toen wel, maar achteraf ben ik blij dat ik veel verschillende opleidingen even meegemaakt heb.",
+          "short": "Ja dat werkt niet he..",
+          "answer": "Nee, maar achteraf ben ik wel blij dat ik allerlei onderwijsvormen gezien heb, privaat & publiek middelbaar onderwijs, MBO & HBO. Ik heb ook aardig wat colleges op de universiteit bijgewoond.",
         },
         {
-          "short": "Heb je dar geen spijt van?",
+          "short": "Heb je daar geen spijt van?",
           "answer": "Ja, soms vindt ik het wel jammer dat ik hierdoor de universiteit misgelopen ben, maar ik heb wel geleerd voor mezelf te denken.",
         },
       ],
@@ -115,8 +106,8 @@ let chat_config = {
       "answer": "Goed, ik ben opgegroeid met 2 liefhebbende ouders.",
     },
     "where_live": {
-      "short": "Waar heb je voor de rest nog gewoond?",
-      "answer": "Ik heb een aantal jaar in Maassluis en Rotterdam gewoond, en op veel verschillende plekken in Utrecht gewoond.",
+      "short": "Waar woon je?",
+      "answer": "Ik woon aan de Utrechtseweg tussen Utrecht en de Bilt in. Hiervoor heb ik een aantal jaar in Maassluis en Rotterdam gewoond, en op veel verschillende plekken in Utrecht gewoond.",
       "sequels": ["why_many_living_places"],
     },
     "why_many_living_places": {
@@ -124,8 +115,8 @@ let chat_config = {
       "answer": "Ik heb in bijna elke wijk in Utrecht wel even gewoond. Dit mede door een jaar kamers onder te huren om zo de stad en veel mensen te leren kennen.",
     },
     "where_work": {
-      "short": "Heb je je eigen werkplek?",
-      "answer": "Yes, ik huur een bureau in een broedplaats aan de Gruttersdijk in Utrecht",
+      "short": "Heb je je eigen werkplek? Zo ja, waar?",
+      "answer": "Yes, ik heb een bureau in een broedplaats aan de Gruttersdijk in Utrecht",
     },
     "what_color": {
       "short": "Wat is je favoriete kleur?",
@@ -133,9 +124,8 @@ let chat_config = {
       "answer": "Pfff.. ik heb niet echt een favoriete kleur, maar groen rood en fel oranje vind ik mooi."
     },
     "why_live": {
-      "short": "Waar leef jij nou eigenlijk voor?",
-      "long": "Allemaal leuk en aardig, maar waar leef jij nou eigenlijk voor?",
-      "answer": "Lastige vraag, allereerst om de mensen om me heen gelukkiger te maken, ten tweede om te zorgen voor onze planeet. Daarnaast wil ik zo veel mogelijk leren.",
+      "short": "Wat vind je op dit moment belangrijk in het leven?",
+      "answer": "Lastige vraag, allereerst mensen om me heen gelukkiger maken, ten tweede zorgen voor onze planeet. Daarnaast wil ik zo veel mogelijk leren.",
       "sequels": ["why_create_happiness", "why_protect_planet", "what_learn"]
     },
     "why_create_happiness": {
@@ -144,7 +134,14 @@ let chat_config = {
     },
     "why_protect_planet": {
       "short": "Waarom zou je de planeet beschermen? Over een tijdje ben je toch dood.",
-      "answer": "Ik zou het fijn vinden als de mens het nog haalt om buiten de grenzen van onze moederplaneet te wonen zonder dat we voor die tijd ons ecosysteem vernietigen."
+      "answer": "Ik zou het fijn vinden als de mens het nog haalt om buiten de grenzen van onze moederplaneet te wonen zonder dat we daarvoor ons ecosysteem vernietigen.",
+      "previous": [{
+        "short": "Ja dat zou mooi zijn.",
+        "answer": "Yeah, ik hoop dat we t kunnen.",
+      }, {
+        "short": "Maar we kunnen ook ons ecosysteem vernietigen en de grondstoffen van de hemellichamen om ons heen gebruiken toch?",
+        "answer": "Dat kan, maar dat maakt ons niet anders dan een virus. Ik hoop dat we anders zijn dan een virus.",
+      }],
     },
     "what_learn": {
       "short": "Wat zou je dan zo al willen leren?",
