@@ -24,6 +24,9 @@ let chat_config = {
   }, {
     "short": "Thanks voor de informatie!",
     "answer": "Graag gedaan, ik hoop dat je er iets mee kunt.",
+  }, {
+    "short": "Hmmm...",
+    "long": "Hmmm wat?",
   }],
   "questions": {
     "start": {
@@ -71,7 +74,7 @@ let chat_config = {
       "sequels": ["what_childhood", "why_mid_school_sent_away"],
     },
     "what_childhood": {
-      "short": "Hoe was je kindertijd?",
+      "short": "Hoe was het opgroeien?",
       "answer": "Ik groeide op in een klein Noord-Hollands dorpje waar alle ruimte was om buiten te spelen en hutten te bouwen, wat ik ook veel gedaan heb.",
       "sequels": ["how_relation_parents", "how_young_social_life", "what_young_build"],
     },
