@@ -193,7 +193,7 @@ const create_chat_message_image = function(name, position = 'left') {
   let image_mobile = document.createElement('div');
   image_mobile.classList.add('image', 'is-48x48', 'is-hidden-tablet');
   let image_mobile_name = document.createElement('p');
-  image_mobile_name.classList.add('my-0', 'is-size-4', 'pt-1');
+  image_mobile_name.classList.add('my-0', 'mt-4', 'is-size-4', 'pt-1');
   image_mobile_name.innerHTML = name;
   image_mobile.append(image_mobile_name);
 

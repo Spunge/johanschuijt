@@ -53,7 +53,7 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
   $triangle-size: 20px;
   $triangle-top-margin: 36px;
   +mobile {
-    $triangle-top-margin: 13px;
+    $triangle-top-margin: 28px;
   }
   $border-color: $grey-lightest;
   $padding: 2rem;
