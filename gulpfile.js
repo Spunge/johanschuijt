@@ -20,8 +20,9 @@ const compile_js = function() {
     .pipe(livereload());
 }
 
-const reload_html = function() {
+const copy_html = function() {
   return src('*.html')
+    .pipe(dest('dist'))
     .pipe(livereload());
 }
 
@@ -60,10 +61,11 @@ exports.default = () => {
   copy_original_images();
   create_thumbs();
   copy_photoswipe();
+  copy_html();
   compile_sass();
   compile_js();
   watch('src/sass/**/*.scss', compile_sass);
   watch('src/js/**/*.js', compile_js);
-  watch('*.html', reload_html);
+  watch('*.html', copy_html);
   livereload.listen();
 }
