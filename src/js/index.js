@@ -182,15 +182,23 @@ const init_slides = function() {
 const create_chat_message_image = function(name, position = 'left') {
   let figure = document.createElement('figure');
   figure.classList.add(`media-${position}`, 'mx-0', 'mt-0');
-  let image = document.createElement('div');
-  image.classList.add('image', 'is-96x96');
 
-  let image_name = document.createElement('p');
-  image_name.classList.add('my-0', 'is-size-1', 'pt-2');
-  image_name.innerHTML = name;
+  let image_desktop = document.createElement('div');
+  image_desktop.classList.add('image', 'is-96x96', 'is-hidden-mobile');
+  let image_desktop_name = document.createElement('p');
+  image_desktop_name.classList.add('my-0', 'is-size-1', 'pt-2');
+  image_desktop_name.innerHTML = name;
+  image_desktop.append(image_desktop_name);
 
-  image.append(image_name);
-  figure.append(image);
+  let image_mobile = document.createElement('div');
+  image_mobile.classList.add('image', 'is-48x48', 'is-hidden-tablet');
+  let image_mobile_name = document.createElement('p');
+  image_mobile_name.classList.add('my-0', 'is-size-4', 'pt-1');
+  image_mobile_name.innerHTML = name;
+  image_mobile.append(image_mobile_name);
+
+  figure.append(image_desktop);
+  figure.append(image_mobile);
   return figure;
 }
 
