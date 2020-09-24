@@ -51,10 +51,8 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
 
 .chat {
   $triangle-size: 20px;
-  $triangle-top-margin: 36px;
-  +mobile {
-    $triangle-top-margin: 28px;
-  }
+  $triangle-top-margin: 28px;
+  $triangle-tablet-top-margin: 36px;
   $border-color: $grey-lightest;
   $padding: 2rem;
 
@@ -74,6 +72,9 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
       content: "";
       position: absolute;
       top: $triangle-top-margin;
+      @include tablet {
+        top: $triangle-tablet-top-margin;
+      }
       right: (-0.5 * $triangle-size) - 1px;
       width: $triangle-size;
       height: $triangle-size;
@@ -85,6 +86,9 @@ $pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (p
       content: "";
       position: absolute;
       top: $triangle-top-margin;
+      @include tablet {
+        top: $triangle-tablet-top-margin;
+      }
       right: (-0.5 * $triangle-size) + 1px;
       border: 1px solid #fff;
       width: $triangle-size;
