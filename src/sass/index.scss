@@ -26,7 +26,7 @@ $footer-padding: 1.5rem 1.5rem !default
 
 @import "node_modules/bulma-timeline/src/sass/index.sass";
 
-$pswp__assets-path: '../../dist/img/' !default; // path to skin assets folder (preloader, PNG and SVG sprite)
+$pswp__assets-path: '../../img/' !default; // path to skin assets folder (preloader, PNG and SVG sprite)
 
 @import "node_modules/photoswipe/src/css/main.scss";
 @import "node_modules/photoswipe/src/css/default-skin/default-skin.scss";
