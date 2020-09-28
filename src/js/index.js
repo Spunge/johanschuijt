@@ -27,6 +27,7 @@ let chat_config = {
   }, {
     "short": "Hmmm...",
     "long": "Hmmm wat?",
+    "answer": "Oh haha, huh?",
   }],
   "questions": {
     "start": {
