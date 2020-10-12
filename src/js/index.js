@@ -1,17 +1,18 @@
 
+let can_ask_question = true;
 let chat_config = {
   "previous": [{
     "short": "Hmm, interessant, kunnen we het over iets anders hebben?",
     "answer": "Tuurlijk, wat wil je weten?"
   }, {
-    "short": "Okay, genoeg hierover.",
-    "answer": "Ehh, wil je nog iets anders weten?"
+    "short": "Okay, genoeg hierover. Mag ik nog wat vragen?",
+    "answer": "Ehh, okay, wat wil je weten dan?"
   }, {
     "short": "Alright, even wat anders...",
     "answer": "Hmmm, wat dan?",
   }, {
-    "short": "Wouw, nice, dat wist ik niet.",
-    "answer": "Ha, zo leer je elke dag weer wat!",
+    "short": "Wouw, nice, dat wist ik niet, kan je nog iets anders vertellen?",
+    "answer": "Ha, zo leer je elke dag weer wat, natuurlijk! Wat wil je weten?",
   }, {
     "short": "Okay, dope.",
     "answer": "Ha, als jij t zegt.",
@@ -22,10 +23,10 @@ let chat_config = {
     "short": "Eeeeh, pfff, hier wil ik niet over praten okay?",
     "answer": "Oh ja, okay, is goed, waar dan wel over?",
   }, {
-    "short": "Thanks voor de informatie!",
-    "answer": "Graag gedaan, ik hoop dat je er iets mee kunt.",
+    "short": "Mag ik je bedanken voor de informatie?",
+    "answer": "Natuurlijk, Graag gedaan, ik hoop dat je er iets mee kunt. Anders nog iets?",
   }, {
-    "short": "Hmmm...",
+    "short": "Hmmm...?",
     "long": "Hmmm wat?",
     "answer": "Oh haha, huh?",
   }],
@@ -37,11 +38,10 @@ let chat_config = {
     "why_no_social": {
       "short": "Waarom heb je geen social media?",
       "answer": "Omdat ik niet als product verhandeld wil worden door grote techpartijen. Daarnaast wil ik mezelf niet in een mal laten gieten, ik maak m'n eigen webpagina wel.",
-      "sequels": ["what_social_miss_out"],
-    },
-    "what_social_miss_out": {
-      "short": "Mis je dan geen sociale evenementen of andere dingen?",
-      "answer": "Nee, eigenlijk niet, chat is genoeg om overal van op de hoogte te blijven eigenlijk.",
+      "previous": [{
+        "short": "Mis je dan geen sociale evenementen of andere dingen?",
+        "answer": "Nee, eigenlijk niet, chat is genoeg om overal van op de hoogte te blijven eigenlijk.",
+      }],
     },
     "what_chatbot": {
       "short": "Wat is dit nou weer, een chatbot?",
@@ -112,11 +112,10 @@ let chat_config = {
     "where_live": {
       "short": "Waar woon je?",
       "answer": "Ik woon aan de Utrechtseweg tussen Utrecht en de Bilt in. Hiervoor heb ik een aantal jaar in Maassluis en Rotterdam gewoond, en op veel verschillende plekken in Utrecht gewoond.",
-      "sequels": ["why_many_living_places"],
-    },
-    "why_many_living_places": {
-      "short": "Hoezo veel plekken?",
-      "answer": "Ik heb in bijna elke wijk in Utrecht wel even gewoond. Dit mede door een jaar kamers onder te huren om zo de stad en veel mensen te leren kennen.",
+      "previous": [{
+        "short": "Hoezo veel plekken?",
+        "answer": "Ik heb in bijna elke wijk in Utrecht wel even gewoond. Dit mede door een jaar kamers onder te huren om zo de stad en veel mensen te leren kennen.",
+      }]
     },
     "where_work": {
       "short": "Heb je je eigen werkplek? Zo ja, waar?",
@@ -242,19 +241,15 @@ const create_guest_chat_message = function(text) {
 }
 
 // Create chat question element
-const create_chat_question = function(question_config) {
+const create_chat_question = function(question_config, callback = () => {}) {
   let anchor = document.createElement('a');
   anchor.classList.add('question');
   anchor.innerHTML = question_config.short;
 
   anchor.addEventListener('click', e => {
     e.preventDefault();
-    // If this question does not have a tag, it's a "previous" question, so pop history
-    if( ! question_config.hasOwnProperty('tag')) {
-      let config = chat_history.pop();
-    }
-
-    ask_question(question_config);
+    // Callback here so we can pop history for back questions
+    callback();
   });
 
   return anchor;
@@ -269,18 +264,7 @@ const set_questions = function(questions) {
   container.append(...questions);
 }
 
-// Get question config blob
-const get_question_config = function(tag) {
-  let question = JSON.parse(JSON.stringify(chat_config.questions[tag]));
-  question.tag = tag;
-
-  if( ! question.sequels) {
-    question.sequels = [];
-  }
-
-  return question;
-}
-
+// Wait a bit
 const delay = function(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -309,64 +293,86 @@ const append_message = function(container, message) {
   }
 }
 
-const ask_question = async function(config) {
+const render_question_and_answer = async function(config) {
   let container = document.querySelectorAll('.chat .messages')[0];
 
-  // Only ask questions when we're not answering a question now
-  if( ! container.classList.contains('answering')) {
-    container.classList.add('answering');
+  if(config.hasOwnProperty('long') || config.hasOwnProperty('short')) {
+    let question = create_guest_chat_message(config.hasOwnProperty('long') ? config.long : config.short);
+    append_message(container, question);
+  }
 
-    // If this has a tag, it's an actual question, if not, it's a "previous" question
-    if(config.hasOwnProperty('tag')) {
-      chat_history.push(config);
+  await delay((Math.random() * 500) + 250);
+  container.classList.add('typing');
+
+  await delay(config.answer.length * 12 + 250);
+  let answer_element = create_own_chat_message(config.answer);
+  append_message(container, answer_element);
+
+  container.classList.remove('typing');
+}
+
+const get_question_configs_by_tags = function(tags) {
+  return tags.map(tag => chat_config.questions[tag]);
+}
+
+// Render next questions after asking a question
+const render_next_questions = function(question_config) {
+  let next_questions = [];
+
+  if(question_config.hasOwnProperty('sequels')) {
+    // Print sequels
+    next_questions.push(...create_questions(get_question_configs_by_tags(question_config.sequels)));
+
+    // Print previous questions
+    if( ! question_config.hasOwnProperty('previous') && chat_history.length > 1) {
+      // Print questions own previous questions
+      next_questions.push(...create_back_questions([get_random_back_question(chat_config.previous)]));
     }
+  }
 
-    if(config.hasOwnProperty('long') || config.hasOwnProperty('short')) {
-      let question = create_guest_chat_message(config.hasOwnProperty('long') ? config.long : config.short);
-      append_message(container, question);
-    }
+  // Always print questions own previous questions
+  if(question_config.hasOwnProperty('previous')) {
+    next_questions.push(...create_back_questions(question_config.previous));
+  }
 
-    await delay((Math.random() * 500) + 250);
-    container.classList.add('typing');
-
-    await delay(config.answer.length * 12 + 250);
-    let answer_element = create_own_chat_message(config.answer);
-    append_message(container, answer_element);
-
-    container.classList.remove('typing');
-
-    let questions = config.sequels
-      .map(tag => get_question_config(tag))
-      .map(question_config => create_chat_question(question_config));
-
-    if(chat_history.length > 1) {
-      let back_questions = config.hasOwnProperty('previous') ? config.previous : [get_random_back_question(chat_config.previous)];
-
-      // Add sequels to back questions && add them to questions
-      questions.push(...back_questions.map(back_question => {
-        let old_question = chat_history[chat_history.length - 2];
-
-        ['sequels', 'previous'].forEach(key => {
-          if(old_question.hasOwnProperty(key)) {
-            back_question[key] = old_question[key];
-          }
-        });
-
-        return create_chat_question(back_question);
-      }));
-    }
-
-    set_questions(questions);
-
-    container.classList.remove('answering');
+  if(next_questions.length) {
+    set_questions(next_questions);
   }
 }
 
+const create_questions = function(questions) {
+  return questions.map(question_config => {
+    // Pass callback that gets executed on clicking the question
+    return create_chat_question(question_config, async () => { 
+      // Question has sequels, remember this question so we can return
+      await render_question_and_answer(question_config); 
+
+      // Should we be able to go back?
+      if(question_config.hasOwnProperty('sequels') || question_config.hasOwnProperty('previous')) {
+        chat_history.push(question_config);
+      }
+
+      render_next_questions(question_config);
+    });
+  })
+};
+
+const create_back_questions = function(questions) {
+  return questions.map(question_config => {
+    return create_chat_question(question_config, async () => {
+      chat_history.pop();
+
+      await render_question_and_answer(question_config); 
+      render_next_questions(chat_history[chat_history.length - 1]);
+    })
+  })
+};
+
 // Make sure i answer questions, would be rude not to
 const init_chat = async function() {
-  let question_config = JSON.parse(JSON.stringify(chat_config.questions.start));
-  question_config.tag = 'start';
-  ask_question(question_config);
+  await render_question_and_answer(chat_config.questions.start);
+  chat_history.push(chat_config.questions.start);
+  set_questions(create_questions(get_question_configs_by_tags(chat_config.questions.start.sequels)))
 }
 
 window.addEventListener('DOMContentLoaded', (event) => {
