@@ -1,4 +1,6 @@
 
+let asked_questions = [];
+let chat_history = [];
 let can_ask_question = true;
 let chat_config = {
   "previous": [{
@@ -8,7 +10,7 @@ let chat_config = {
     "short": "Okay, genoeg hierover. Mag ik nog wat vragen?",
     "answer": "Ehh, okay, wat wil je weten dan?"
   }, {
-    "short": "Alright, even wat anders...",
+    "short": "Alright, even wat anders...?",
     "answer": "Hmmm, wat dan?",
   }, {
     "short": "Wouw, nice, dat wist ik niet, kan je nog iets anders vertellen?",
@@ -33,7 +35,81 @@ let chat_config = {
   "questions": {
     "start": {
       "answer": "Als je nog vragen hebt kun je er hier een paar stellen, ik zal m'n best doen ze zo goed mogelijk te beantwoorden.",
-      "sequels": ["what_chatbot", "what_past", "what_now", "why_no_social"],
+      "sequels": ["what_chatbot", "what_about_person", "what_about_business"],
+    },
+    "what_about_business": {
+      "short": "Okay, even zakelijk...?",
+      "long": "Even ter zake, kan je me wat meer vertellen over zakelijke onderwerpen?",
+      "answer": "Alright, wat zou je willen weten?",
+      "sequels": ["so_you_are_programmer", "what_you_add_to_business", "where_work"],
+    },
+    "so_you_are_programmer": {
+      "short": "Jij bent programmeur?",
+      "long": "Je bent programmeur zeg je, kan je daar wat meer over vertellen?",
+      "answer": "Yeah, ik programmeer al meer dan 10 jaar voor m'n werk, en ook veel voor m'n hobby.",
+      "sequels": ["how_much_experience_languages", "what_programming_joyful", "what_you_self_learn_update"],
+    },
+    "how_much_experience_languages": {
+      "short": "Hoe veel ervaring heb je met de talen waarvan je aangeeft dat je er ervaring mee hebt?",
+      "answer": "Javascript zet ik al bijna 10 jaar in. Rust heb ik net een jaar ervaring mee en gebruik ik tot nog toe alleen voor m'n drummachine. PHP heb ik vroeger jaren gebruikt. Python en Ruby heb ik maar voor een aantal projecten gebruikt. C heb ik veel gelezen, maar weinig zelf in geschreven.",
+    },
+    "what_programming_joyful": {
+      "short": "Wat vindt je het leukst om te programmeren?",
+      "answer": "Rust, by far. Ik wordt ook erg vrolijk van het programmeren van audio software omdat dit overlap heeft met mijn muzikale ambities.",
+    },
+    "what_you_add_to_business": {
+      "short": "Wat kan jij voor ons betekenen?",
+      "answer": "Ik heb veel ervaring met architectuur, en communiceer makkelijk met anderen. Overzicht bewaren is mijn sterke kant denk ik zelf.",
+    },
+    "what_you_self_learn_update": {
+      "short": "Wat doe je om jezelf up-to-date te houden als programmeur?",
+      "answer": "Ik probeer altijd meer talen te leren, ik denk dat dat een goede manier is om te verbeteren als programmeur. Nieuwe technologie ben ik niet altijd mee bezig omdat het wiel vaak opnieuw uitgevonden wordt in de IT.",
+    },
+    "what_about_person": {
+      "short": "Mag ik nog iets vragen over jou persoonlijk?",
+      "answer": "Tuurlijk mag dat, wat bedoel je precies met persoonlijk?",
+      "sequels": ["what_past", "what_present", "what_future", "why_live"],
+    },
+    "what_present": {
+      "short": "Kan ik nog wat meer horen over je huidige situatie?",
+      "answer": "Okay, zoals wat?",
+      "sequels": ["where_live", "what_hobbies", "why_no_social"],
+    },
+    "what_hobbies": {
+      "short": "Muziek maken en lezen, nice man!",
+      "answer": "Ja, ik ga er zelf ook wel echt goed op.",
+      "sequels": ["what_about_music", "what_books"],
+    },
+    "what_future": {
+      "short": "Je toekomst, hoe ziet die er uit?",
+      "answer": "Als ik dat toch eens wist...",
+    },
+    "what_about_music": {
+      "short": "Ik wilde graag meer weten over je muziek, kan je daar wat over vertellen?",
+      "answer": "Sure, ik maak in m'n 1tje digitale muziek met mijn controllers en met m'n bandjes pop en blues muziek",
+      "sequels": ["how_create_drummachine", "what_kind_of_music"],
+    },
+    "how_create_drummachine": {
+      "short": "Hoe maak je dan zo'n drummachine?",
+      "answer": "Oef, dat is nog al een verhaal, ik gebruik hiervoor 2 midi-controllers van AKAI, linux als platform en Rust als programmeertaal.",
+      "sequels": ["why_drummachine_rust", "why_create_self_not_buy"],
+    },
+    "why_drummachine_rust": {
+      "short": "Waarom gebruik je daarvoor Rust?",
+      "answer": "Omdat een drummachine real-time software is, en je dus een zeer snelle taal wil gebruiken. Elke 5 milliseconden loop ik door 80 patterns, met daarin <x> noten, dit alles kost nog geen procent aan processor kracht. Computers zijn belachelijk snel tegenwoordig."
+    },
+    "why_create_self_not_buy": {
+      "short": "Waarom maak je dat zelf?",
+      "long": "Waarom koop je niet gewoon een drummachine, in plaats van het zelf maken?",
+      "answer": "Omdat ik op linux muziek wilde maken in eerste instantie en al een geschikte controller hiervoor had, daarnaast omdat de drummachine die ik wil niet te koop is.",
+    },
+    "what_kind_of_music": {
+      "short": "Wat voor muziek maak je en met wie?",
+      "answer": "Zelf maak ik voornamelijk bass music, hiphop en gerelateerde genres hou ik van. Met Ootes π Lotus maak ik vrolijke pop-rock en met \"no-plan\" maak ik bluesrock."
+    },
+    "what_books": {
+      "short": "Wat vind je leuke boeken?",
+      "answer": "Ik lees voornamelijk filosofie, en wissel dit af met economie, en psychologie. Soms lees ik wat fictie als tussendoortje. Ik ben nu bijvoorbeeld bezig in \"Magie en Emotie\" van Jean-Paul Sartre. Het boek dat ik net uit heb is \"The Ascent of Money\" door Niall Ferguson.",
     },
     "why_no_social": {
       "short": "Waarom heb je geen social media?",
@@ -63,11 +139,6 @@ let chat_config = {
     "where_idea_chatbot": {
       "short": "Hoe ben je op dat idee gekomen?",
       "answer": "Deze techniek wordt veel gebruikt in games voor non-player-characters.",
-    },
-    "what_now": {
-      "short": "Ik wil wat meer weten over je huidige situatie, kan je daar wat over vertellen?",
-      "answer": "Natuurlijk, wat voor onderwerp zou je meer over willen weten?.",
-      "sequels": ["where_live", "where_work", "why_live"],
     },
     "what_past": {
       "short": "Kan ik je nog wat vragen over je verleden?",
@@ -240,22 +311,46 @@ const create_guest_chat_message = function(text) {
   return article;
 }
 
+// Check all sequels, if they are all asked, this question is asked aswell
+const is_question_asked = function(question_config) {
+  if(question_config.hasOwnProperty('tag')) {
+    if(question_config.hasOwnProperty('sequels')) {
+      return get_question_configs_by_tags(question_config.sequels).map(is_question_asked).reduce((a, b) => a && b);
+    } else {
+      return asked_questions.indexOf(question_config.tag) !== -1;
+    }
+  } else {
+    return false;
+  }
+}
+
 // Create chat question element
 const create_chat_question = function(question_config, callback = () => {}) {
   let anchor = document.createElement('a');
   anchor.classList.add('question');
+
+  // Mark asked questions
+  if(is_question_asked(question_config)) {
+    anchor.classList.add('asked-question');
+  }
+
+  if( ! question_config.hasOwnProperty('tag')) {
+    anchor.classList.add('back-question');
+  }
+
   anchor.innerHTML = question_config.short;
 
   anchor.addEventListener('click', e => {
     e.preventDefault();
-    // Callback here so we can pop history for back questions
-    callback();
+
+    if(can_ask_question) {
+      // Callback here so we can pop history for back questions
+      callback();
+    }
   });
 
   return anchor;
 }
-
-let chat_history = [];
 
 // Load questions into DOM
 const set_questions = function(questions) {
@@ -294,6 +389,8 @@ const append_message = function(container, message) {
 }
 
 const render_question_and_answer = async function(config) {
+  // Disable asking questions when answering
+  can_ask_question = false;
   let container = document.querySelectorAll('.chat .messages')[0];
 
   if(config.hasOwnProperty('long') || config.hasOwnProperty('short')) {
@@ -309,10 +406,16 @@ const render_question_and_answer = async function(config) {
   append_message(container, answer_element);
 
   container.classList.remove('typing');
+  can_ask_question = true;
 }
 
 const get_question_configs_by_tags = function(tags) {
-  return tags.map(tag => chat_config.questions[tag]);
+  return tags.map(tag => {
+    // Add tag to config so we can use it for
+    let data = chat_config.questions[tag];
+    data.tag = tag;
+    return data;
+  });
 }
 
 // Render next questions after asking a question
@@ -337,6 +440,8 @@ const render_next_questions = function(question_config) {
 
   if(next_questions.length) {
     set_questions(next_questions);
+  } else {
+    render_next_questions(chat_history[chat_history.length - 1]);
   }
 }
 
@@ -344,7 +449,11 @@ const create_questions = function(questions) {
   return questions.map(question_config => {
     // Pass callback that gets executed on clicking the question
     return create_chat_question(question_config, async () => { 
-      // Question has sequels, remember this question so we can return
+      // Remember what questions people asked to help them
+      if(question_config.hasOwnProperty('tag') && asked_questions.indexOf(question_config.tag) === -1) {
+        asked_questions.push(question_config.tag);
+      }
+
       await render_question_and_answer(question_config); 
 
       // Should we be able to go back?
