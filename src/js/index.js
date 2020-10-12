@@ -76,8 +76,8 @@ let chat_config = {
       "sequels": ["where_live", "what_hobbies", "why_no_social"],
     },
     "what_hobbies": {
-      "short": "Muziek maken en lezen, nice man!",
-      "answer": "Ja, ik ga er zelf ook wel echt goed op.",
+      "short": "Muziek maken en lezen, anders nog iets?",
+      "answer": "Ja, sporten! Soms kijk ik documentaires. Ook kijk ik Keuringsdienst van Waarde.",
       "sequels": ["what_about_music", "what_books"],
     },
     "what_future": {
