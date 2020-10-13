@@ -31,6 +31,9 @@ let chat_config = {
     "short": "Hmmm...?",
     "long": "Hmmm wat?",
     "answer": "Oh haha, huh?",
+  }, {
+    "short": "Waar hadden we t net ook al weer over?",
+    "answer": "Nou...",
   }],
   "questions": {
     "start": {
@@ -38,10 +41,14 @@ let chat_config = {
       "sequels": ["what_chatbot", "what_about_person", "what_about_business"],
     },
     "what_about_business": {
-      "short": "Okay, even zakelijk...?",
-      "long": "Even ter zake, kan je me wat meer vertellen over zakelijke onderwerpen?",
+      "short": "Kan je me wat vertellen over je werk en ambities?",
+      "long": "Even ter zake, kan je me wat meer vertellen over je werk?",
       "answer": "Alright, wat zou je willen weten?",
-      "sequels": ["so_you_are_programmer", "what_you_add_to_business", "where_work"],
+      "sequels": ["so_you_are_programmer", "what_you_add_to_business", "what_want_ambitions", "where_work"],
+    },
+    "what_want_ambitions": {
+      "short": "Waar zou je over 5 jaar willen zijn?",
+      "answer": "Ik wil over 5 jaar mijn aandacht verdeeld hebben over een IT-baan waar ik een overzichts functie heb, muziek maken met verschillende bands, en daarnaast wil ik graag een eigen huis bouwen.",
     },
     "so_you_are_programmer": {
       "short": "Jij bent programmeur?",
@@ -59,11 +66,18 @@ let chat_config = {
     },
     "what_you_add_to_business": {
       "short": "Wat kan jij voor ons betekenen?",
-      "answer": "Ik heb veel ervaring met architectuur, en communiceer makkelijk met anderen. Overzicht bewaren is mijn sterke kant denk ik zelf.",
+      "answer": "Ik heb veel ervaring met het vormgeven en opzetten van systemen, en communiceer makkelijk met anderen. Overzicht bewaren is mijn sterke kant denk ik zelf.",
+      "previous": [{
+        "short": "Hmm, kan je daar wat meer over vertellen?",
+        "answer": "Natuurlijk, maar neem dat even contact op zodat ik ook kan horen wat jullie doen!",
+      }, {
+        "short": "Wij zoeken iemand die designs kan omzetten tot wordpress thema's.",
+        "answer": "Sorry, maar daar kan ik je niet bij helpen..."
+      }]
     },
     "what_you_self_learn_update": {
       "short": "Wat doe je om jezelf up-to-date te houden als programmeur?",
-      "answer": "Ik probeer altijd meer talen te leren, ik denk dat dat een goede manier is om te verbeteren als programmeur. Nieuwe technologie ben ik niet altijd mee bezig omdat het wiel vaak opnieuw uitgevonden wordt in de IT.",
+      "answer": "Ik probeer altijd meer talen te leren, ik denk dat dat een goede manier is om te verbeteren als programmeur. Nieuwe technologie volg ik met een half oog omdat het wiel vaak opnieuw uitgevonden wordt, maar ik ben op een abstracte manier op de hoogte van ontwikkelingen.",
     },
     "what_about_person": {
       "short": "Mag ik nog iets vragen over jou persoonlijk?",
@@ -77,7 +91,7 @@ let chat_config = {
     },
     "what_hobbies": {
       "short": "Muziek maken en lezen, anders nog iets?",
-      "answer": "Ja, sporten! Soms kijk ik documentaires. Ook kijk ik Keuringsdienst van Waarde.",
+      "answer": "Ha, hier gaat wel het merendeel van m'n tijd aan op, maar daarnaast ook veel sporten! Soms kijk ik documentaires. Ook kijk ik Keuringsdienst van Waarde.",
       "sequels": ["what_about_music", "what_books"],
     },
     "what_future": {
@@ -85,27 +99,46 @@ let chat_config = {
       "answer": "Als ik dat toch eens wist...",
     },
     "what_about_music": {
-      "short": "Ik wilde graag meer weten over je muziek, kan je daar wat over vertellen?",
-      "answer": "Sure, ik maak in m'n 1tje digitale muziek met mijn controllers en met m'n bandjes pop en blues muziek",
-      "sequels": ["how_create_drummachine", "what_kind_of_music"],
+      "short": "Wat voor muziek maak je eigenlijk?",
+      "answer": "Ik maak in m'n 1tje digitale bass music met mijn drummachine/controllers en met m'n bandjes maak ik pop-rock en blues.",
+      "sequels": ["how_create_drummachine", "make_music_together"],
     },
     "how_create_drummachine": {
       "short": "Hoe maak je dan zo'n drummachine?",
       "answer": "Oef, dat is nog al een verhaal, ik gebruik hiervoor 2 midi-controllers van AKAI, linux als platform en Rust als programmeertaal.",
-      "sequels": ["why_drummachine_rust", "why_create_self_not_buy"],
+      "sequels": ["why_drummachine_rust", "why_create_self_not_buy", "why_linux_for_music"],
     },
     "why_drummachine_rust": {
       "short": "Waarom gebruik je daarvoor Rust?",
       "answer": "Omdat een drummachine real-time software is, en je dus een zeer snelle taal wil gebruiken. Elke 5 milliseconden loop ik door 80 patterns, met daarin <x> noten, dit alles kost nog geen procent aan processor kracht. Computers zijn belachelijk snel tegenwoordig."
     },
     "why_create_self_not_buy": {
-      "short": "Waarom maak je dat zelf?",
-      "long": "Waarom koop je niet gewoon een drummachine, in plaats van het zelf maken?",
+      "short": "Waarom koop je er niet gewoon één?",
+      "long": "Waarom koop je niet gewoon een drummachine, in plaats van er zelf één te maken?",
       "answer": "Omdat ik op linux muziek wilde maken in eerste instantie en al een geschikte controller hiervoor had, daarnaast omdat de drummachine die ik wil niet te koop is.",
     },
-    "what_kind_of_music": {
-      "short": "Wat voor muziek maak je en met wie?",
-      "answer": "Zelf maak ik voornamelijk bass music, hiphop en gerelateerde genres hou ik van. Met Ootes π Lotus maak ik vrolijke pop-rock en met \"no-plan\" maak ik bluesrock."
+    "why_linux_for_music": {
+      "short": "Maar Ableton werkt toch helemaal niet op Linux?",
+      "answer": "Ha ja, ik heb eerst ook een tijd muziek gemaakt met Ableton, maar werken op Windows was zeer onprettig. Nu gebruik ik Ardour, deze DAW kan ik helemaal besturen via OSC (open sound control), waardoor ik alles kan aansturen vanuit m'n controllers.",
+      "previous": [{
+        "short": "Pff, mooi trucje hoor!",
+        "answer": "Ja het was even zoeken maar ik heb nu een aardige manier gevonden om te bouwen wat ik zoek.",
+      }, {
+        "short": "Wow, kan je me dat laten zien?",
+        "long": "Dat klinkt best wel tof eigenlijk, kan je me een keer laten zien hoe je dat doet?",
+        "answer": "Ja hoor, tuurlijk! Moet je me even bellen!",
+      }]
+    },
+    "make_music_together": {
+      "short": "Zin om een keer muziek te maken?",
+      "answer": "Ja joh! Ik ben altijd in voor een keer jammen, bel me!",
+      "previous": [{
+        "short": "Okay ik ga je nu bellen!",
+        "answer": "Top, ik zit klaar!",
+      }, {
+        "short": "Vind ik spannend...",
+        "answer": "Niet doen joh, pak die telefoon!"
+      }],
     },
     "what_books": {
       "short": "Wat vind je leuke boeken?",
@@ -115,6 +148,10 @@ let chat_config = {
       "short": "Waarom heb je geen social media?",
       "answer": "Omdat ik niet als product verhandeld wil worden door grote techpartijen. Daarnaast wil ik mezelf niet in een mal laten gieten, ik maak m'n eigen webpagina wel.",
       "previous": [{
+        "short": "Ja dat gevoel ken ik...",
+        "long": "Ja dat gevoel ken ik... Ik ben ook m'n social network gebruik aan het terugdringen.",
+        "answer": "Nice! Lekker bezig. Veel mensen beseffen zich niet wat voor karikatuur ze van zichzelf aan t maken zijn.",
+      }, {
         "short": "Mis je dan geen sociale evenementen of andere dingen?",
         "answer": "Nee, eigenlijk niet, chat is genoeg om overal van op de hoogte te blijven eigenlijk.",
       }],
@@ -153,10 +190,6 @@ let chat_config = {
     "what_young_build": {
       "short": "Hutten bouwen, nice!",
       "answer": "Ja, daar heb ik veel handigheid aan over gehouden.",
-      "previous": [{
-        "short": "Fijn man.",
-        "answer": "Yeah!",
-      }],
     },
     "why_mid_school_sent_away": {
       "short": "Ruige schooltijd zo te zien, waarom was dat?",
@@ -177,16 +210,28 @@ let chat_config = {
       "answer": "Niet slecht. Ik was een slimme jongen in een klein dorp, dus viel ik soms een beetje buiten de boot, maar ik heb er wel altijd vrienden gehad.",
     },
     "how_relation_parents": {
-      "short": "Hoe was de relatie met je ouders toendertijd?",
+      "short": "Hoe was de relatie met je ouders?",
       "answer": "Goed, ik ben opgegroeid met 2 liefhebbende ouders.",
+      "previous": [{
+        "short": "Fijn, nog steeds goed?",
+        "answer": "Yup!",
+      }],
     },
     "where_live": {
       "short": "Waar woon je?",
-      "answer": "Ik woon aan de Utrechtseweg tussen Utrecht en de Bilt in. Hiervoor heb ik een aantal jaar in Maassluis en Rotterdam gewoond, en op veel verschillende plekken in Utrecht gewoond.",
+      "answer": "Ik woon aan de Utrechtseweg tussen Utrecht en de Bilt in. Hiervoor heb ik even in Maassluis en Rotterdam gewoond, en op veel verschillende plekken in Utrecht gewoond.",
+      "sequels": ["why_many_places_live"],
+    },
+    "why_many_places_live": {
+      "short": "Hoezo veel plekken?",
+      "answer": "Ik heb in bijna elke wijk in Utrecht wel even gewoond. Dit mede door een jaar kamers onder te huren om zo de stad en veel mensen te leren kennen.",
       "previous": [{
-        "short": "Hoezo veel plekken?",
-        "answer": "Ik heb in bijna elke wijk in Utrecht wel even gewoond. Dit mede door een jaar kamers onder te huren om zo de stad en veel mensen te leren kennen.",
-      }]
+        "short": "Wow, dat klinkt gezellig!",
+        "answer": "Ha ja, dit was echt een hele leuke tijd."
+      }, {
+        "short": "Wel veel onzekerheid lijkt me?",
+        "answer": "Ha ja, ik leefde uit een backpack, maar het was een prachtig avontuur.",
+      }],
     },
     "where_work": {
       "short": "Heb je je eigen werkplek? Zo ja, waar?",
@@ -198,13 +243,21 @@ let chat_config = {
       "answer": "Pfff.. ik heb niet echt een favoriete kleur, maar groen rood en fel oranje vind ik mooi."
     },
     "why_live": {
-      "short": "Wat vind je op dit moment belangrijk in het leven?",
+      "short": "Wat vind je belangrijk in het leven?",
       "answer": "Lastige vraag, allereerst mensen om me heen gelukkiger maken, ten tweede zorgen voor onze planeet. Daarnaast wil ik zo veel mogelijk leren.",
       "sequels": ["why_create_happiness", "why_protect_planet", "what_learn"]
     },
     "why_create_happiness": {
       "short": "Waarom zou je andere mensen gelukkig willen maken in plaats van jezelf?",
-      "answer": "Omdat ik daar zelf vervolgens ook gelukkiger van wordt."
+      "answer": "Omdat ik daar zelf vervolgens ook gelukkiger van wordt.",
+      "previous": [{
+        "short": "Dus je wil wel jezelf gelukkiger maken!",
+        "answer": "Ha, zie het als bijkomstig effect. Zo wordt iedereen gelukkiger! Maar ja, ergens wel paradoxaal niet?",
+      }, {
+        "short": "Ha ja, dat is dan wel effectief.",
+        "long": "Soort van 2 vliegen in 1 klap, klinkt effectief.",
+        "answer": "Ja toch!",
+      }],
     },
     "why_protect_planet": {
       "short": "Waarom zou je de planeet beschermen? Over een tijdje ben je toch dood.",
@@ -213,7 +266,8 @@ let chat_config = {
         "short": "Ja dat zou mooi zijn.",
         "answer": "Yeah, ik hoop dat we t kunnen.",
       }, {
-        "short": "Maar we kunnen ook ons ecosysteem vernietigen en de grondstoffen van de hemellichamen om ons heen gebruiken toch?",
+        "short": "Maar we kunnen ook verspreiden naar andere planeten!",
+        "long": "Maar we kunnen ook ons ecosysteem vernietigen en de grondstoffen van de hemellichamen om ons heen gebruiken toch?",
         "answer": "Dat kan, maar dat maakt ons niet anders dan een virus. Ik hoop dat we anders zijn dan een virus.",
       }],
     },
