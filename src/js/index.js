@@ -71,8 +71,8 @@ let chat_config = {
         "short": "Hmm, kan je daar wat meer over vertellen?",
         "answer": "Natuurlijk, maar neem dat even contact op zodat ik ook kan horen wat jullie doen!",
       }, {
-        "short": "Wij zoeken iemand die designs kan omzetten tot wordpress thema's.",
-        "answer": "Sorry, maar daar kan ik je niet bij helpen..."
+        "short": "Ben je ook bereid iets anders dan dat te doen?",
+        "answer": "Dat hangt er compleet van af wat dat \"anders\" is. Ik drink graag een kopje koffie met je!"
       }]
     },
     "what_you_self_learn_update": {
