@@ -44,11 +44,11 @@ let chat_config = {
       "short": "Kan je me wat vertellen over je werk en ambities?",
       "long": "Even ter zake, kan je me wat meer vertellen over je werk?",
       "answer": "Alright, wat zou je willen weten?",
-      "sequels": ["so_you_are_programmer", "what_you_add_to_business", "what_want_ambitions", "where_work"],
+      "sequels": ["so_you_are_programmer", "what_you_add_to_business", "what_want_ambitions"],
     },
     "what_want_ambitions": {
       "short": "Waar zou je over 5 jaar willen zijn?",
-      "answer": "Ik wil over 5 jaar mijn aandacht verdeeld hebben over een IT-baan waar ik een overzichts functie heb, muziek maken met verschillende bands, en daarnaast wil ik graag een eigen huis bouwen.",
+      "answer": "Ik wil over 5 jaar mijn aandacht verdeeld hebben over een baan waar ik m'n technische vernuft in kwijt kan, muziek maken met verschillende bands, en daarnaast wil ik graag een eigen huis bouwen.",
     },
     "so_you_are_programmer": {
       "short": "Jij bent programmeur?",
@@ -66,7 +66,7 @@ let chat_config = {
     },
     "what_you_add_to_business": {
       "short": "Wat kan jij voor ons betekenen?",
-      "answer": "Ik heb veel ervaring met het vormgeven en opzetten van systemen, en communiceer makkelijk met anderen. Overzicht bewaren is mijn sterke kant denk ik zelf.",
+      "answer": "Ik ben een technische handige gast en kan van alles, met of zonder computer. Ik heb veel ervaring met het vormgeven en opzetten van systemen, maar een hamer vasthouden is mij ook niet vreemd. Ik communiceer makkelijk met anderen. Overzicht bewaren is mijn sterke kant denk ik zelf.",
       "previous": [{
         "short": "Hmm, kan je daar wat meer over vertellen?",
         "answer": "Natuurlijk, maar neem dat even contact op zodat ik ook kan horen wat jullie doen!",
@@ -232,10 +232,6 @@ let chat_config = {
         "short": "Wel veel onzekerheid lijkt me?",
         "answer": "Ha ja, ik leefde uit een backpack, maar het was een prachtig avontuur.",
       }],
-    },
-    "where_work": {
-      "short": "Heb je je eigen werkplek? Zo ja, waar?",
-      "answer": "Yes, ik heb een bureau in een broedplaats aan de Gruttersdijk in Utrecht",
     },
     "what_color": {
       "short": "Wat is je favoriete kleur?",
