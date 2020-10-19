@@ -16,7 +16,7 @@ let chat_config = {
     "short": "Wouw, nice, dat wist ik niet, kan je nog iets anders vertellen?",
     "answer": "Ha, zo leer je elke dag weer wat, natuurlijk! Wat wil je weten?",
   }, {
-    "short": "Okay, leuk?",
+    "short": "Okay, leuk.",
     "answer": "Ha, als jij t zegt.",
   }, {
     "short": "Alright, kunnen we nog even terug?",
